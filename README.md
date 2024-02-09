@@ -6,5 +6,5 @@
 -Example for number 1 :
  4 ---sqrt---> 2 ---sqrt---> 1.42 ---floor---> 1
 
- --Example for number 10 :
+ -Example for number 10 :
  4 ---×5---> 20 ---×5---> 100 ---sqrt---> 10
