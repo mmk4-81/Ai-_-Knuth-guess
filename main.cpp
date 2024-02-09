@@ -8,6 +8,19 @@
 
 using namespace std;
 
+void knuthGuess(float goal);
+
 int main(){
+
+    float target;
+    cout << "Enter the target number:\n >>";
+    cin >> target;
+
+    knuthGuess(target);
+
     return 0;
+}
+
+void knuthGuess(float goal) {
+
 }
