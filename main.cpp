@@ -7,9 +7,6 @@
 #include <stack>
 
 using namespace std;
-
-void knuthGuess(float goal);
-
 class Node
 {
 public:
@@ -21,6 +18,9 @@ public:
     Node(float num, shared_ptr<Node> parent, string action, int level) : num(num), parent(parent), action(action), level(level) {}
 };
 
+void knuthGuess(float goal);
+void print(shared_ptr<Node> node);
+
 int main()
 {
 
@@ -31,6 +31,41 @@ int main()
     knuthGuess(target);
 
     return 0;
+}
+
+
+void print(shared_ptr<Node> node)
+{
+    stack<shared_ptr<Node>> steps;
+
+    while (node != nullptr)
+    {
+        steps.push(node);
+        node = node->parent;
+    }
+
+    int step_num = 1;
+
+    if (!steps.empty())
+    {
+        steps.pop();
+    }
+
+    while (!steps.empty())
+    {
+        shared_ptr<Node> step = steps.top();
+        steps.pop();
+
+        cout << "step" << step_num << " => " << step->action << " ";
+        if (step->parent)
+        {
+            float new_num = step->parent->num;
+            cout << fixed << setprecision(2) << new_num << " = " << fixed << setprecision(2) << step->num;
+        }
+        cout << endl;
+
+        step_num++;
+    }
 }
 
 void knuthGuess(float goal)
@@ -48,6 +83,7 @@ void knuthGuess(float goal)
 
         if (current->num == goal)
         {
+            print(current);
             cout << "done" << endl;
             return;
         }
@@ -80,3 +116,4 @@ void knuthGuess(float goal)
 
     cout << "No solution found!" << endl;
 }
+
