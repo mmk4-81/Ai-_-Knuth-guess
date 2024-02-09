@@ -10,6 +10,17 @@ using namespace std;
 
 void knuthGuess(float goal);
 
+class Node {
+public:
+    float num;
+    shared_ptr<Node> parent;
+    string action;
+    int level;
+
+    Node(float num, shared_ptr<Node> parent, string action, int level) : num(num), parent(parent), action(action), level(level) {}
+};
+
+
 int main(){
 
     float target;
